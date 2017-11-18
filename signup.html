@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/build/css/bootstrap-datetimepicker.css" rel="stylesheet"/>
+        <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css"> 
+     
+<style>
+    body{
+        background-image: url("bg2.jpg");
+    }
+     #loginbox{
+        
+        background-color: rgba(0,0,0,0.7);
+        top:50%;
+         
+    }
+    input,select{
+        padding: 10px;
+        border: 0px;
+        
+    }
+    button{
+        padding: 10px;
+        border: 0px;
+        border-radius: 0px;
+        background-color: dodgerblue;
+        color:white;
+    }
+    p{
+        color:white;
+    }
+</style>
+</head>
+<body>
+    <br><br>
+    <div class="container">
+      <div class="row text-center">
+    <div class="center-block" >
+      <div id="loginbox" class="col-xs-8 col-xs-offset-2" >
+          <br>
+          <div class="row">
+          <h3 style="color:white;">Join Zoref Bank</h3>
+          </div>
+        <div id="loginform">
+            <div class="row">
+        <form action="signupconnect.php" method="post">
+            <br><br>
+            
+                <input class="col-xs-3 col-xs-offset-2" type="text" placeholder="First Name" name="first_name"/>
+                <input class="col-xs-3 col-xs-offset-1" type="text" placeholder="Last Name" name="last_name"/><br><br><br>
+                <input class="col-xs-6 col-xs-offset-2" type="text" placeholder="username" name="username"/><br><br><br>
+                <input class="col-xs-3 col-xs-offset-2" type="password" placeholder="password" id="password" name="password"/>
+                <input class="col-xs-3 col-xs-offset-1" type="password" placeholder="Confirm password" id="cpassword" name="cpassword"/><br><br><br>
+                <input class="col-xs-8 col-xs-offset-2" type="text" placeholder="Address" name="address"/><br><br><br>
+                <input class="col-xs-3 col-xs-offset-2" type="text" placeholder="DoB" id="dob" name="dob"/>
+                <script type="text/javascript">  
+                 $('#dob').datetimepicker({
+                     format: 'YYYY/MM/DD'
+                 });
+                </script>
+                <input class="col-xs-3 col-xs-offset-1" type="text" placeholder="City" name="city"/><br><br><br>
+                <input class="col-xs-6 col-xs-offset-2" type="text" placeholder="Phone" name="phone"/><br><br><br>
+                <input class="col-xs-6 col-xs-offset-2" type="Email" placeholder="Email" name="email"/><br><br><br>
+                <input class="col-xs-4 col-xs-offset-2" type="text" placeholder="Enter Initial Amount" name="amount"/><br><br><br>
+                <select class="col-xs-4 col-xs-offset-2" type="drop" placeholder="Account type" name="acc_type">
+                    <option>-Select Account Type-</option>
+                    <option>current</option>
+                    <option>savings</option>
+                </select><br><br><br>
+                <button class="col-xs-8 col-xs-offset-2" id="submitbutton" name="submit" name="signupbutton">Sign Up</button><br><br><br>
+            <a href="Login.php">Go back</a>
+        </form>
+            </div>
+    </div>
+        </div>
+    </div> 
+  </div> 
+</div>
+<script>
+    var password = document.getElementById("password")
+  , cpassword = document.getElementById("cpassword");
+
+function validatePassword(){
+  if(password.value != cpassword.value) {
+    cpassword.setCustomValidity("Passwords Don't Match");
+  } else {
+    cpassword.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+cpassword.onkeyup = validatePassword;
+    $("#submitbutton").click(function(){
+        alert("it works");
+        
+    });
+    
+    </script>
+
+</body>
+</html>

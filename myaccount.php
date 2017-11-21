@@ -24,7 +24,7 @@ $accounttypequery=mysql_query($querythree);
 
 $rownum=mysql_fetch_array($accountnumberquery);
 
-$rowbal=mysql_fetch_array($accountbalancequery);
+$rowbal=mysql_fetch_array($accountbalancequery); 
 
 $rowtype=mysql_fetch_array($accounttypequery);
 
@@ -41,15 +41,10 @@ $accounttype= $rowtype["account_type"];
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
-
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
 <script src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js"></script>
-
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
-
 <link href="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/build/css/bootstrap-datetimepicker.css" rel="stylesheet"/>
        <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
  
@@ -97,7 +92,7 @@ $accounttype= $rowtype["account_type"];
                                <li class="nav-item"><a class="nav-item-child nav-item-hover active" href="myaccount.html">My Account</a></li>
                                 <li class="nav-item"><a class="nav-item-child nav-item-hover" href="ebilling.php">E-Billing</a></li>
                                 <li class="nav-item"><a class="nav-item-child nav-item-hover" href="Transactions.php">Transactions</a></li>
-                                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="budgeting.html">Budgeting</a></li>
+                                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="budgeting.php">Budgeting</a></li>
                                 <li class="nav-item"><a class="nav-item-child nav-item-hover" href="contact1.html">Contact</a></li>
                                 <li class="nav-item"><a class="nav-item-child nav-item-hover" href="Login.html">LOG OUT</a></li>
                             </ul>

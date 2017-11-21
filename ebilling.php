@@ -136,9 +136,8 @@ $(document).ready(function(){
                                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="myaccount.php">My Account</a></li>
                                 <li class="nav-item"><a class="nav-item-child nav-item-hover active" href="ebilling.php">E-Billing</a></li>
                                 <li class="nav-item"><a class="nav-item-child nav-item-hover" href="Transactions.php">Transactions</a></li>
-                                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="budgeting.html">Budgeting</a></li>
                                 <li class="nav-item"><a class="nav-item-child nav-item-hover" href="contact1.html">Contact</a></li>
-                                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="Login.php">LOG OUT</a></li>
+                                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="logout.php">LOG OUT</a></li>
                             </ul>
                         </div>
                     </div>
@@ -196,6 +195,7 @@ $(document).ready(function(){
         </div>
    
 </div>
+    <form action="verifybiller.php" method="POST">
         <div class="col-lg-4" style="background-color: #ececec; height: 700px;">
              <br><br><br><br><br>
             <h3>Register New</h3>
@@ -262,8 +262,10 @@ $(document).ready(function(){
             </div>
             
         </div>
+    </form>
         <br><br><br><br><br>
         </div>
+
     
 </div>
     	<footer id="gtco-footer" role="contentinfo">

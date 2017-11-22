@@ -4,7 +4,7 @@ $u=$_SESSION['inuser'];
 $p=$_SESSION['pass'];
 $user="root";
 $password="";
-$database ="speedycashf";
+$database ="zorefbank";
 $connect = mysql_connect("localhost:3306", $user, $password);
 @mysql_select_db($database) or ("database not found");
 
@@ -14,9 +14,9 @@ $amounttrans = $_POST['ramnt'];
 $expiry= $_POST['datetimepicker1'];
 $pass =$_POST['passwd'];  
 
-$queryone="SELECT a.Email from customer a, customer_login b where b.Username='$u' and b.Password='$p' and a.Cust_no=b.Cust_no";
-$querytwo ="SELECT a.BalancewithInterest FROM account a, customer_login c WHERE c.Username = '$u' and c.Password='$p' and c.Cust_no=a.Cust_no";
-$querythree="SELECT a.Acc_no FROM account a, customer_login c WHERE c.Username = '$u' and c.Password='$p' and c.Cust_no=a.Cust_no";
+$queryone="SELECT a.Email from customer a, userrole b where b.Username='$u' and b.Password='$p' and a.Cust_no=b.Cust_no";
+$querytwo ="SELECT a.Balance FROM account a, userrole c WHERE c.Username = '$u' and c.Password='$p' and c.Cust_no=a.Cust_no";
+$querythree="SELECT a.Acc_no FROM account a, userrole c WHERE c.Username = '$u' and c.Password='$p' and c.Cust_no=a.Cust_no";
     
 $accountbalancequery=mysql_query($querytwo);
 $ownaccountnum=mysql_query($querythree);
@@ -26,7 +26,7 @@ $rowbal=mysql_fetch_array($accountbalancequery);
 $ownrow=mysql_fetch_array($ownaccountnum);
 $emailrow=mysql_fetch_array($emailn);
     
-$accountbalance = $rowbal["BalancewithInterest"];
+$accountbalance = $rowbal["Balance"];
 $ownaccountnumber = $ownrow["Acc_no"];
 $email = $emailrow["Email"];
     
@@ -64,8 +64,10 @@ function myOTP($length = 8, $chars = 'abcdefghijklmnopqrstuvwxyz1234567890')
     }
     return $stringo;
 } 
-
-     mail($email,"Zoref Bank Transaction Voucher",'Dear '.$u.'! Your One-Time password is: ' .$stringo. ' Your Voucher No is: ' .$stringv ,'From: zorefbank@gmail.com');
+function sendmail($email,$u,$stringo,$stringv)
+{
+         mail($email,"Speedycash Transaction Voucher",'Dear '.$u.'! Your One-Time password is: ' .$stringo. ' Your Voucher No is: ' .$stringv ,'From: teamspeedycash@gmail.com');
+    }
 
 
     
@@ -106,7 +108,7 @@ if(!$queryfour or !$querysix)
         window.location.href='Transactions.php'
         </SCRIPT>");
    
-   $this->sendmail($email,$u,$stringo,$stringv);
+   sendmail($email,$u,$stringo,$stringv);
 }
      
 

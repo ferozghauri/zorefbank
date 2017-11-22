@@ -13,7 +13,7 @@ $p=$_SESSION['pass'];
 
 $user="root";
 $password="";
-$database ="speedycashf";
+$database ="zorefbank";
 $connect = mysql_connect("localhost:3306", $user, $password);
 @mysql_select_db($database) or ("database not found");
 

@@ -1,11 +1,11 @@
 <?php 
- $connect = mysqli_connect("localhost", "root", "", "speedycashf");
+ $connect = mysqli_connect("localhost", "root", "", "zorefbank");
 if(isset($_POST["id"]))
 {
     $cno = $_POST["id"];
     $sql = "SELECT * FROM customer WHERE Cust_no = '$cno'";
     $queryone = "SELECT acc_no from account where Cust_no = '$cno'";
-    $querytwo ="SELECT balancewithinterest from account where cust_no = '$cno'";
+    $querytwo ="SELECT balance from account where cust_no = '$cno'";
     $querythree="SELECT account_type from account where cust_no = '$cno'";
     $result = mysqli_query($connect, $sql);
     $result2=mysqli_query($connect, $queryone);
@@ -25,13 +25,11 @@ if(isset($_POST["id"]))
                 
                 <h4>Customer Number: <a style="color: dodgerblue;">'.$custinfo["Cust_no"].'</a> </h4>
                 
-                <h4>Branch code: <a  style="color: dodgerblue;">'.$custinfo["Branch_code"].'</a> </h4>
-                
                 <h4>Account Number: <a style="color: dodgerblue;">'.$accountinfo["acc_no"].'</a> </h4>
                 
                 <h4>Account Type: <a style="color: dodgerblue;">'.$rowtype["account_type"].'</a> </h4>
                 
-                <h4>Balance: <a style="color: dodgerblue;">'.$rowbal["balancewithinterest"].'</a> </h4>
+                <h4>Balance: <a style="color: dodgerblue;">'.$rowbal["balance"].'</a> </h4>
                 
                 <h4>Email: <a style="color: dodgerblue;">'.$custinfo["Email"].'</a> </h4>
                 

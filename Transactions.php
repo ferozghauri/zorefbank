@@ -1,5 +1,10 @@
 <?php
-
+session_start();
+$connect = mysqli_connect("localhost", "root", "", "zorefbank");
+$c=$_SESSION['Cust_no'];
+$custname ="SELECT * from customer where Cust_no='$c'";
+$custnamer = mysqli_query($connect,$custname);
+$fetchcustname = mysqli_fetch_array($custnamer);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,10 +101,10 @@ $(document).ready(function(){
                     <div class="collapse navbar-collapse nav-collapse">
                         <div class="menu-container">
                             <ul class="navbar-nav navbar-nav-right">
+                                 <li class="nav-item"><a class="nav-item-child nav-item-hover" href="myaccount.php"><?php echo $fetchcustname["First_name"]; ?></a></li>
                                 <li class="nav-item"><a class="nav-item-child nav-item-hover" href="myaccount.php">My Account</a></li>
                                 <li class="nav-item"><a class="nav-item-child nav-item-hover" href="ebilling.php">E-Billing</a></li>
-                                <li class="nav-item"><a class="nav-item-child nav-item-hover active" href="Transactions.html">Transactions</a></li>
-                                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="budgeting.html">Budgeting</a></li>
+                                <li class="nav-item"><a class="nav-item-child nav-item-hover active" href="Transactions.php">Transactions</a></li>
                                 <li class="nav-item"><a class="nav-item-child nav-item-hover" href="contact1.html">Contact</a></li>
                                 <li class="nav-item"><a class="nav-item-child nav-item-hover" href="Login.php">LOG OUT</a></li>
                             </ul>
@@ -113,23 +118,14 @@ $(document).ready(function(){
         <!--========== END HEADER ==========-->
 
         <!--========== PARALLAX ==========-->
-        <div class="parallax-window" data-parallax="scroll" data-image-src="img/1920x1080/01.jpg">
+        <div class="parallax-window" data-parallax="scroll" data-image-src="img/1920x1080/tt.jpg">
             <div class="parallax-content container">
                 <h1 class="carousel-title">Transactions</h1>
-                <p>tareefein about transactions or some details etc etc <br/> enim minim estudiat veniam siad venumus dolore</p>
             </div>
         </div>
         <!--========== PARALLAX ==========-->
 <div class="container">
-<!--
-<div class="col-lg-12" id="head">
 
-   <h2>Transactions</h2>
-    <p>Use our Latest Money Transfering technology and alot more tareefein and alot more manjan here </p>
-    <br>
-    <br>
-</div>
--->
     <br><br><br>
 <div class="row">
     
@@ -276,7 +272,25 @@ $(document).ready(function(){
   
         
       
-    
+    <footer id="gtco-footer" role="contentinfo">
+		<div class="container">
+			<div class="row copyright">
+				<div class="col-md-12">
+					<p class="pull-left">
+						<small class="block">&copy; 2017 Zoref Bank. All Rights Reserved.</small> 
+					</p>
+					<p class="pull-right">
+						<ul class="gtco-social-icons pull-right">
+							<li><a href="#"><i class="icon-twitter"></i></a></li>
+							<li><a href="#"><i class="icon-facebook"></i></a></li>
+							
+						</ul>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</footer>
     
       
 

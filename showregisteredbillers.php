@@ -2,9 +2,9 @@
  session_start();
  $u=$_SESSION['inuser'];
  $p=$_SESSION['pass'];
- $connect = mysqli_connect("localhost", "root", "", "speedycashf");  
+ $connect = mysqli_connect("localhost", "root", "", "zorefbank");  
  $output = '';  
- $sql = "select company_name from available_billers where Biller_no in (select Biller_no from registered_biller where Cust_no=(select Cust_no FROM customer_login where Username='$u' and Password='$p'))"; 
+ $sql = "select company_name from available_billers where Biller_no in (select Biller_no from registered_biller where Cust_no=(select Cust_no FROM userrole where username='$u' and password='$p'))"; 
  $result = mysqli_query($connect, $sql);   
  if(mysqli_num_rows($result) > 0)  
  {  

@@ -1,6 +1,6 @@
 <?php
 //fetch.php
-$connect = mysqli_connect("localhost", "root", "", "speedycashf");
+$connect = mysqli_connect("localhost", "root", "", "zorefbank");
 $columns = array('First_name', 'Last_name');
 
 $query = "SELECT * FROM Customer ";

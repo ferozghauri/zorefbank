@@ -2,9 +2,9 @@
 session_start();
 $u=$_SESSION['inuser'];
 $p=$_SESSION['pass'];
- $connect = mysqli_connect("localhost", "root", "", "speedycashf");  
+ $connect = mysqli_connect("localhost", "root", "", "zorefbank");  
  $output = '';  
- $sql = "(SELECT * FROM bills where Acc_no = (SELECT Acc_no from account where Cust_no=(Select Cust_no from customer_login where Username='$u' and Password='$p')))";  
+ $sql = "(SELECT * FROM bills where Acc_no = (SELECT Acc_no from account where Cust_no=(Select Cust_no from userrole where Username='$u' and Password='$p')))";  
  $result = mysqli_query($connect, $sql);  
  $output .= '  
       

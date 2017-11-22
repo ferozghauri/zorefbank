@@ -1,6 +1,6 @@
 <?php 
 
- $connect = mysqli_connect("localhost", "root", "", "speedycashf");
+ $connect = mysqli_connect("localhost", "root", "", "zorefbank");
 if(isset($_POST["id"]))
 {
     echo "hello i work";
@@ -23,7 +23,7 @@ if(isset($_POST["id"]))
     $accountnumber = mt_rand(100000, 999999);
     $amount = $custinfo['Init_amount'];
     $role = 'user';
-    $query = "INSERT INTO Customer (Branch_code,First_name,Last_name,Email,Age,Dob,Contact,Address) VALUES ('$branchcode','$fname','$lname','$email','$age','$dob','$phone','$address')"; 
+    $query = "INSERT INTO Customer (First_name,Last_name,Email,Age,DoB,Contact,Address) VALUES ('$fname','$lname','$email','$age','$dob','$phone','$address')"; 
     $data = mysqli_query($connect, $query);
     if($data){
         

@@ -1,5 +1,5 @@
 <?php
-$connect=mysqli_connect("localhost","root","","speedycashf");
+$connect=mysqli_connect("localhost","root","","zorefbank");
 if(isset($_POST['f1'])){
     
 $first_name=$_POST['fname'];

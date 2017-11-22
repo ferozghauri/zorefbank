@@ -3,7 +3,7 @@ session_start();
 $servername = "localhost";
                $username = "root";
                $password = "";
-               $dbname = "speedycashf";
+               $dbname = "zorefbank";
            // Create Connection
             $connect = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -22,8 +22,8 @@ $p=$_SESSION['pass'];
  {  
  $queryone = "SELECT Biller_account_no from biller_accounts where Biller_no=(select Biller_no from bills where Bill_no = '$bno')"; 
  $querytwo ="SELECT Amount FROM bills where Bill_no='$bno'";
- $querythree="SELECT a.Acc_no FROM account a, customer_login c WHERE c.Username = '$u' and c.Password='$p' and c.Cust_no=a.Cust_no";
- $qu ="SELECT a.BalancewithInterest FROM account a, customer_login c WHERE c.Username = '$u' and c.Password='$p' and c.Cust_no=a.Cust_no";
+ $querythree="SELECT a.Acc_no FROM account a, userrole c WHERE c.Username = '$u' and c.Password='$p' and c.Cust_no=a.Cust_no";
+ $qu ="SELECT a.Balance FROM account a, userrole c WHERE c.username = '$u' and c.password='$p' and c.Cust_no=a.Cust_no";
 
 $com_accquery=mysqli_query($connect,$queryone);
 $billquery=mysqli_query($connect,$querytwo);
@@ -39,22 +39,20 @@ $ownrow=mysqli_fetch_array($ownaccountnum);
 
 $com_acc = $rownum["Biller_account_no"];
 $bill_amount =$rowbil["Amount"];
-$mon = $rowqu["BalancewithInterest"];
+$mon = $rowqu["Balance"];
 $ownaccountnumber = $ownrow["Acc_no"];
 
 if($com_acc && $bill_amount<$mon && $bill_amount )
 {
 mysqli_query($connect,"BEGIN");
-$querythree="Update account set BalancewithInterest = (BalancewithInterest-'$bill_amount') where Acc_no='$ownaccountnumber'";
+$querythree="Update account set Balance = (Balance-'$bill_amount') where Acc_no='$ownaccountnumber'";
 $queryone="Update biller_accounts set Balance = (Balance+'$bill_amount') where biller_account_no='$com_acc'";
-$queryt="Update account set Balance = (Balance-'$bill_amount') where Acc_no='$ownaccountnumber'";
 $sDate = date("Y-m-d H:i:s"); 
 $querytwo= "INSERT INTO `paid_bills` (`Bill_no`, `Amount`, `PaidTime`) VALUES ('$bno', '$bill_amount', '$sDate')";
 mysqli_query($connect,$querythree);
 mysqli_query($connect,$queryone);
-mysqli_query($connect,$queryt);
 mysqli_query($connect,$querytwo);
-if(!$querythree or !$queryone or !$queryt or !$querytwo)
+if(!$querythree or !$queryone or !$querytwo)
 {
     mysqli_query($connect,"ROLLBACK");
 }

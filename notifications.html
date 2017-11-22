@@ -1,5 +1,12 @@
 <html>
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/build/css/bootstrap-datetimepicker.css" rel="stylesheet"/>
+<link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
     <style>
       #notifications{
           font-family: sans-serif;
@@ -12,21 +19,29 @@
         font-family: sans-serif;
     }
     </style>
+    <script>
+    $(document).ready(function(){  
+      function fetch_data()  
+      {  
+           $.ajax({  
+                url:"notifications.php",  
+                method:"POST",  
+                success:function(data){  
+                     $('#notifications').html(data);  
+                }  
+           });  
+      }  
+      fetch_data();  
+        $("#bi").onclick(function(){
+           window.location.href="ebilling.php"; 
+        });
+    
+ });
+    </script>
 </head>
     <body>
      <table id="notifications">
-         <tr>
-             <td><h4>Notification</h4><a>Notification Detail</a></td>
-        </tr>
-        <tr>
-            <td><h4>Notification</h4><a>Notification Detail</a></td>
-        </tr>
-        <tr>
-             <td><h4>Notification</h4><a>Notification Detail</a></td>
-        </tr>
-        <tr>
-            <td><h4>Notification</h4><a>Notification Detail</a></td>
-        </tr>
+   
          </table>
     </body>
 </html>

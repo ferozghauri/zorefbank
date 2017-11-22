@@ -1,9 +1,8 @@
 
 <?php 
- $connect = mysqli_connect("localhost", "root", "", "speedycashf"); 
  
 function newuser(){
-     $connect = mysqli_connect("localhost", "root", "", "speedycashf");
+     $connect = mysqli_connect("localhost", "root", "", "zorefbank");
     $fname = $_POST['first_name'];
     $lname = $_POST['last_name'];
     $username = $_POST['username'];
@@ -21,15 +20,15 @@ function newuser(){
     if($data) 
     { 
         echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.alert('You're registration is completed! You will be notified soon about the confirmation of your account)
-        window.location.href='index.html'
+        window.alert('You're registration is completed! You will be notified soon about the confirmation of your account');
+        window.location.href='index.html';
         </SCRIPT>");
     }
 
 }
 function SignUp(){ 
     if(!empty($_POST['username']))
-{  $connect = mysqli_connect("localhost", "root", "", "speedycashf");
+{  $connect = mysqli_connect("localhost", "root", "", "zorefbank");
         $query = mysqli_query($connect,"SELECT * FROM newcustomer WHERE username = '$_POST[username]' AND password = '$_POST[password]'"); 
         if(!$row = mysqli_fetch_array($query)) 
         { 

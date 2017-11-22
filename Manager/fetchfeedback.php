@@ -1,5 +1,5 @@
 <?php 
-    $connect = mysqli_connect("localhost", "root", "", "speedycashf");
+    $connect = mysqli_connect("localhost", "root", "", "zorefbank");
     $sql = "SELECT * FROM messages";
     $output='';
     $result = mysqli_query($connect, $sql);

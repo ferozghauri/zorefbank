@@ -2,9 +2,9 @@
  session_start();
  $u=$_SESSION['inuser'];
  $p=$_SESSION['pass'];
- $connect = mysqli_connect("localhost", "root", "", "speedycashf");  
+ $connect = mysqli_connect("localhost", "root", "", "zorefbank");  
  $output = '';  
- $sql = "(SELECT * FROM acc2acc a where Acc_no=(SELECT a.Acc_no FROM account a, customer_login c WHERE c.Username = '$u' and c.Password='$p' and c.Cust_no=a.Cust_no))";  
+ $sql = "(SELECT * FROM acc2acc a where Acc_no=(SELECT a.Acc_no FROM account a, userrole c WHERE c.Username = '$u' and c.Password='$p' and c.Cust_no=a.Cust_no))";  
  $result = mysqli_query($connect, $sql);  
  $output .= '  
       

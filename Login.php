@@ -46,8 +46,8 @@
 </style>
 </head>
 <body>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<div class="col-xs-4 col-xs-offset-2 text-center">
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div class="col-xs-4 col-xs-offset-2 text-center"><br><br>
   <div class="row text-center">
     <div class="center-block">
       <div id="logo" class="center-block">
@@ -66,7 +66,8 @@
                                   <input name="us" class="col-xs-8 col-xs-offset-2" type="text" placeholder="username" id="username"/><br><br><br>
                                   <input name="pas" class="col-xs-8 col-xs-offset-2" type="password" placeholder="password" id="password"/><br><br><br>
                                   <button name="submit" id="loginbutton" class="btn btn-default col-xs-8 col-xs-offset-2">Login</button><br><br><br>
-                                  <p class="message">Not registered?<a href="createaccount.html">Create an account</a></p>
+                                  <p class="message">Not registered?<a href="createaccount.html">Create an account</a></p><br><br>
+                                 <a href="index.html">Go back</a><br><br>
 
 
                             </form>

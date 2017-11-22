@@ -12,13 +12,13 @@ $amounttrans = $_POST['ramnt'];
 $pass =$_POST['passwd'];  
 $user="root";
 $password="";
-$database ="speedycashf";
+$database ="zorefbank";
 $connect = mysql_connect("localhost:3306", $user, $password);
 @mysql_select_db($database) or ("database not found");
     
 $queryone = "SELECT Acc_no FROM account where Acc_no='$accountnum'"; 
-$querytwo ="SELECT a.BalancewithInterest FROM account a, customer_login c WHERE c.Username = '$u' and c.Password='$p' and c.Cust_no=a.Cust_no";
-$querythree="SELECT a.Acc_no FROM account a, customer_login c WHERE c.Username = '$u' and c.Password='$p' and c.Cust_no=a.Cust_no";
+$querytwo ="SELECT a.Balance FROM account a, userrole c WHERE c.Username = '$u' and c.Password='$p' and c.Cust_no=a.Cust_no";
+$querythree="SELECT a.Acc_no FROM account a, userrole c WHERE c.Username = '$u' and c.Password='$p' and c.Cust_no=a.Cust_no";
 $accountnumberquery=mysql_query($queryone);
 $accountbalancequery=mysql_query($querytwo);
 $ownaccountnum=mysql_query($querythree);
@@ -28,7 +28,7 @@ $rowbal=mysql_fetch_array($accountbalancequery);
 $ownrow=mysql_fetch_array($ownaccountnum);
     
 $accountnumber = $rownum["Acc_no"];
-$accountbalance =$rowbal["BalancewithInterest"];
+$accountbalance =$rowbal["Balance"];
 $ownaccountnumber = $ownrow["Acc_no"];
     
     
@@ -36,18 +36,12 @@ $ownaccountnumber = $ownrow["Acc_no"];
 if($accountnumber && $amounttrans<$accountbalance && $pass == $p && $amounttrans && $pass)
 { 
 mysql_query("BEGIN");
-$queryone="Update account set BalancewithInterest = (BalancewithInterest+'$amounttrans') where Acc_no='$accountnumber'";
-$querythree="Update account set BalancewithInterest = (BalancewithInterest-'$amounttrans') where Acc_no='$ownaccountnumber'";
-    
-$queryo="Update account set Balance = (Balance+'$amounttrans') where Acc_no='$accountnumber'";
-$queryt="Update account set Balance = (Balance-'$amounttrans') where Acc_no='$ownaccountnumber'";
+$queryone="Update account set Balance = (Balance+'$amounttrans') where Acc_no='$accountnumber'";
+$querythree="Update account set Balance = (Balance-'$amounttrans') where Acc_no='$ownaccountnumber'";
 $sDate = date("Y-m-d H:i:s");     
 $querytwo= "INSERT INTO `acc2acc` (`T_id`, `Acc_no`, `Reciever_acc_no`, `Amount`, `DateTime`) VALUES ('', '$ownaccountnumber', '$accountnumber', '$amounttrans','$sDate')";
 mysql_query($queryone);
 mysql_query($querythree);
-    
-mysql_query($queryo);
-mysql_query($queryt);
 mysql_query($querytwo);
 if(!$queryone)
 {

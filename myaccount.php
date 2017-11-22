@@ -4,17 +4,20 @@ $u=$_SESSION['inuser'];
 $p=$_SESSION['pass'];
 $user="root";
 $password="";
-      $database ="speedycashf";
-      $connect = mysql_connect("localhost:3306", $user, $password);
-      @mysql_select_db($database) or ("database not found");
-      $querycustno = "select Cust_no from customer_login where Password = '$p' and Username='$u'";
-      $resultcustno=mysql_query($querycustno);
-      $rowcustno=mysql_fetch_array($resultcustno);
-      $c= $rowcustno["Cust_no"];
-      $_SESSION['Cust_no']=$c;
-      $queryone = "SELECT acc_no from account where cust_no = '$c'";
-      $querytwo ="SELECT balancewithinterest from account where cust_no = '$c'";
-      $querythree="SELECT account_type from account where cust_no = '$c'";
+$database ="zorefbank";
+$connect = mysql_connect("localhost:3306", $user, $password);
+@mysql_select_db($database) or ("database not found");
+$querycustno = "select Cust_no from userrole where Password = '$p' and Username='$u'";
+$resultcustno=mysql_query($querycustno);
+$rowcustno=mysql_fetch_array($resultcustno);
+$c= $rowcustno["Cust_no"];
+$_SESSION['Cust_no']=$c;
+$queryone = "SELECT acc_no from account where cust_no = '$c'";
+$querytwo ="SELECT balance from account where cust_no = '$c'";
+$querythree="SELECT account_type from account where cust_no = '$c'";
+$custname ="SELECT * from customer where Cust_no='$c'";
+$custnamer = mysql_query($custname);
+$fetchcustname = mysql_fetch_array($custnamer);
 
 $accountnumberquery=mysql_query($queryone);
 
@@ -31,7 +34,7 @@ $rowtype=mysql_fetch_array($accounttypequery);
 
 
 $accountnumber = $rownum["acc_no"];
-$accountbalance =$rowbal["balancewithinterest"];
+$accountbalance =$rowbal["balance"];
 $accounttype= $rowtype["account_type"];
 ?>
 <!DOCTYPE html>
@@ -88,13 +91,13 @@ $accounttype= $rowtype["account_type"];
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse nav-collapse">
                         <div class="menu-container">
-                            <ul class="navbar-nav navbar-nav-right">
-                               <li class="nav-item"><a class="nav-item-child nav-item-hover active" href="myaccount.html">My Account</a></li>
+                                <ul class="navbar-nav navbar-nav-right">
+                                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="myaccount.php"><?php echo $fetchcustname["First_name"]; ?></a></li>
+                                <li class="nav-item"><a class="nav-item-child nav-item-hover active" href="myaccount.php">My Account</a></li>
                                 <li class="nav-item"><a class="nav-item-child nav-item-hover" href="ebilling.php">E-Billing</a></li>
                                 <li class="nav-item"><a class="nav-item-child nav-item-hover" href="Transactions.php">Transactions</a></li>
-                                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="budgeting.php">Budgeting</a></li>
                                 <li class="nav-item"><a class="nav-item-child nav-item-hover" href="contact1.html">Contact</a></li>
-                                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="Login.html">LOG OUT</a></li>
+                                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="logout.php">LOG OUT</a></li>
                             </ul>
                         </div>
                     </div>
@@ -108,8 +111,8 @@ $accounttype= $rowtype["account_type"];
         <!--========== PARALLAX ==========-->
         <div class="parallax-window" data-parallax="scroll" data-image-src="img/1920x1080/01.jpg">
             <div class="parallax-content container">
-                <h1 class="carousel-title">Mera Khata</h1>
-                <p>tareefein about transactions or some details etc etc <br/> enim minim estudiat veniam siad venumus dolore</p>
+                <h1 class="carousel-title">My Account</h1>
+                <p>We are glad to see you as apart of our family. <br> Here you can have the true joy of hastleless banking.</p>
             </div>
         </div>
         <!--========== PARALLAX ==========-->
@@ -124,7 +127,7 @@ $accounttype= $rowtype["account_type"];
     
     <div class="col-lg-5" style="padding:20px;">
     <br/>
-        <div class="row"><h1> <?php echo $_SESSION['inuser']; ?> </h1></div>
+        <div class="row"><h1> <?php echo $fetchcustname["First_name"]; ?> <?php echo $fetchcustname["Last_name"]; ?></h1></div>
         <div class="row"><h4><?php echo $accounttype; ?></h4></div>
     </div>   
     </div>
@@ -135,16 +138,7 @@ $accounttype= $rowtype["account_type"];
          <br><br><br><br><br>
         <h4>Account Balance: <a><?php echo $accountbalance; ?></a> </h4>
         <br>
-        <h4>Monthly Budget: <a><?php echo $_SESSION['budget']; ?> </a> </h4>
-        <br>
-        <h4>Cash used this month: <a><?php echo $_SESSION['cashused']; ?> </a> </h4>
-        <br>
-        <h4>Budget Meter</h4>
-        <div class="progress">
-    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:30%">
-      <span class="sr-only">70% Complete</span>
-    </div>
-  </div>
+        
         
     </div>
     
@@ -153,7 +147,7 @@ $accounttype= $rowtype["account_type"];
 </div>
 <div class="col-lg-4" >
     <br><br><br>
-    <h3>INBOX</h3>
+    <h3>NOTIFICATIONS</h3>
 <div class="embed-responsive embed-responsive-4by3">
   <iframe class="embed-responsive-item" src="notifications.html"></iframe>
 </div>
@@ -161,6 +155,25 @@ $accounttype= $rowtype["account_type"];
 </div>
    
 </div>
+    <footer id="gtco-footer" role="contentinfo">
+		<div class="container">
+			<div class="row copyright">
+				<div class="col-md-12">
+					<p class="pull-left">
+						<small class="block">&copy; 2017 Zoref Bank. All Rights Reserved.</small> 
+					</p>
+					<p class="pull-right">
+						<ul class="gtco-social-icons pull-right">
+							<li><a href="#"><i class="icon-twitter"></i></a></li>
+							<li><a href="#"><i class="icon-facebook"></i></a></li>
+							
+						</ul>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</footer>
             <!-- PAGE LEVEL SCRIPTS imp  -->
         <script src="js/layout.min.js" type="text/javascript"></script>
     <script src="vendor/jquery.parallax.min.js" type="text/javascript"></script>

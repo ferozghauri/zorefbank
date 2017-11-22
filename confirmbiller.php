@@ -5,7 +5,7 @@ $u=$_GET['user'];
 $p=$_GET['p'];
 $user="root";
 $password="";
-$database ="speedycashf";
+$database ="zorefbank";
 $connect = mysql_connect("localhost:3306", $user, $password);
 @mysql_select_db($database) or ("database not found");
 
@@ -28,7 +28,7 @@ $rows=mysql_fetch_array($queryo);
 $id=$rows['Biller_no'];
 $com_accno=$rows['Biller_account_no'];
 
-$querytwo="SELECT Cust_no from customer_login where Username ='$u' and Password='$p'";
+$querytwo="SELECT Cust_no from userrole where Username ='$u' and Password='$p'";
 $queryt=mysql_query($querytwo);
 $rows=mysql_fetch_array($queryt);
 $cus_accno=$rows['Cust_no'];

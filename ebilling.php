@@ -1,5 +1,10 @@
 <?php
-    session_start();
+session_start();
+$connect = mysqli_connect("localhost", "root", "", "zorefbank");
+$c=$_SESSION['Cust_no'];
+$custname ="SELECT * from customer where Cust_no='$c'";
+$custnamer = mysqli_query($connect,$custname);
+$fetchcustname = mysqli_fetch_array($custnamer);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,17 +13,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
-
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
 <script src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js"></script>
-
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
-
 <link href="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/build/css/bootstrap-datetimepicker.css" rel="stylesheet"/>
        <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+ 
+    
+    <link rel="stylesheet" href="css/animate.css">
  
     <style>
         .btn{
@@ -133,6 +136,7 @@ $(document).ready(function(){
                     <div class="collapse navbar-collapse nav-collapse">
                         <div class="menu-container">
                             <ul class="navbar-nav navbar-nav-right">
+                                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="myaccount.php"><?php echo $fetchcustname["First_name"]; ?></a></li>
                                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="myaccount.php">My Account</a></li>
                                 <li class="nav-item"><a class="nav-item-child nav-item-hover active" href="ebilling.php">E-Billing</a></li>
                                 <li class="nav-item"><a class="nav-item-child nav-item-hover" href="Transactions.php">Transactions</a></li>
@@ -149,10 +153,11 @@ $(document).ready(function(){
         <!--========== END HEADER ==========-->
 
         <!--========== PARALLAX ==========-->
-        <div class="parallax-window" data-parallax="scroll" data-image-src="img/1920x1080/01.jpg">
+        <div class="parallax-window" data-parallax="scroll" data-image-src="img/1920x1080/eb.jpg">
             <div class="parallax-content container">
-                <h1 class="carousel-title">e-billing</h1>
-                <p>tareefein about transactions or some details etc etc <br/> enim minim estudiat veniam siad venumus dolore</p>
+                <h1 class="carousel-title"> </h1>
+                <h1 class="carousel-title"> e-billing</h1>
+                <p> Register to our partner companies and get your bills right<br/> here and pay them with just one click </p>
             </div>
         </div>
         <!--========== PARALLAX ==========-->
@@ -173,6 +178,7 @@ $(document).ready(function(){
     
             <br><br><br>
     
+<!--
         <div id="moneyinfo" class="col-lg-12">
         <div class="row">
                <div class="col-sm-8">
@@ -180,6 +186,7 @@ $(document).ready(function(){
                </div>
             </div>
         </div>
+-->
      <br><br><br>
     <div id="moneyinfo" class="col-lg-12">
         <div class="row">
@@ -211,7 +218,7 @@ $(document).ready(function(){
                 $servername = "localhost";
                $username = "root";
                $password = "";
-               $dbname = "speedycashf";
+               $dbname = "zorefbank";
            // Create Connection
             $conn = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -221,7 +228,8 @@ $(document).ready(function(){
               
             }
     
-           $stmt = "SELECT d.company_name from available_billers d, billersonbranches e where d.Biller_no not in (SELECT Biller_no FROM registered_biller where Cust_no =(SELECT Cust_no FROM customer_login  WHERE Username = '$u' and Password='$p')) and e.Branch_code= ( SELECT Branch_code from customer where Cust_no = (SELECT Cust_no from customer_login where Username = '$u' and Password = '$p')) and d.Biller_no = e.Biller_no";
+           $stmt = "SELECT company_name from available_billers where Biller_no not in (SELECT Biller_no FROM registered_biller where Cust_no =(SELECT Cust_no FROM userrole  WHERE username = '$u' and password='$p'))";
+
             $result = mysqli_query($conn,$stmt) or die(mysqli_error($conn));
             while(list($categor) = mysqli_fetch_row($result)){
                 echo '<option value="'.$categor.'">'.$categor.'</option>';
@@ -267,7 +275,7 @@ $(document).ready(function(){
         </div>
 
     
-</div>
+
     	<footer id="gtco-footer" role="contentinfo">
 		<div class="container">
 			<div class="row copyright">

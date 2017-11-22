@@ -1,6 +1,6 @@
 <?php 
 
- $connect = mysqli_connect("localhost", "root", "", "speedycashf");
+ $connect = mysqli_connect("localhost", "root", "", "zorefbank");
 if(isset($_POST["id"]))
 {
         $cno = $_POST["id"];

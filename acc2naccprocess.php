@@ -66,7 +66,7 @@ function myOTP($length = 8, $chars = 'abcdefghijklmnopqrstuvwxyz1234567890')
 } 
 function sendmail($email,$u,$stringo,$stringv)
 {
-         mail($email,"Speedycash Transaction Voucher",'Dear '.$u.'! Your One-Time password is: ' .$stringo. ' Your Voucher No is: ' .$stringv ,'From: teamspeedycash@gmail.com');
+         mail($email,"Zorefbank Transaction Voucher",'Dear '.$u.'! Your One-Time password is: ' .$stringo. ' Your Voucher No is: ' .$stringv ,'From: teamspeedycash@gmail.com');
     }
 
 

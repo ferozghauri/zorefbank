@@ -196,7 +196,7 @@ $(document).ready(function(){
             </div>
             <br>
             <div class="row">
-                <label for="inputLocation" class="col-sm-5 control-label">Enter Exipiry Datw</label>
+                <label for="inputLocation" class="col-sm-5 control-label">Enter Exipiry Date</label>
                 <div class="col-sm-8">
                 <div class='input-group date' name="datetimepicker1" id="datetimepicker1">
                     <input type='text' class="form-control" name="datetimepicker1" id="datetimepicker1" placeholder="Default Time 48 hours" />

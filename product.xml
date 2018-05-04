@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+
+<EmailMessage>
+    <To>k142182@nu.edu.pk</To>
+    <Subject>Test Email</Subject>
+    <MessageBody>This Email is to test XML input</MessageBody>
+</EmailMessage>

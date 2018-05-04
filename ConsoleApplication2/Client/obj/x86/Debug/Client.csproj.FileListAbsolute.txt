@@ -1,0 +1,16 @@
+c:\users\probook\documents\visual studio 2010\Projects\ConsoleApplication2\Client\bin\Debug\Client.exe
+c:\users\probook\documents\visual studio 2010\Projects\ConsoleApplication2\Client\bin\Debug\Client.pdb
+c:\users\probook\documents\visual studio 2010\Projects\ConsoleApplication2\Client\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\probook\documents\visual studio 2010\Projects\ConsoleApplication2\Client\obj\x86\Debug\Client.exe
+c:\users\probook\documents\visual studio 2010\Projects\ConsoleApplication2\Client\obj\x86\Debug\Client.pdb
+C:\Users\mfazal\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Client\obj\x86\Debug\Client.exe
+C:\Users\mfazal\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Client\obj\x86\Debug\Client.pdb
+C:\Users\mfazal\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Client\bin\Debug\Client.exe
+C:\Users\mfazal\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Client\bin\Debug\Client.pdb
+C:\Users\mfazal\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Client\obj\x86\Debug\Client.csprojResolveAssemblyReference.cache
+C:\Users\mfazal\OneDrive\FAST\Spring 2017\IPT\Lectures\Week01\Week01Code2\ConsoleApplication2\Client\obj\x86\Debug\Client.exe
+C:\Users\mfazal\OneDrive\FAST\Spring 2017\IPT\Lectures\Week01\Week01Code2\ConsoleApplication2\Client\obj\x86\Debug\Client.pdb
+C:\Users\mfazal\OneDrive\FAST\Spring 2017\IPT\Lectures\Week01\Week01Code2\ConsoleApplication2\Client\bin\Debug\Client.exe.config
+C:\Users\mfazal\OneDrive\FAST\Spring 2017\IPT\Lectures\Week01\Week01Code2\ConsoleApplication2\Client\bin\Debug\Client.exe
+C:\Users\mfazal\OneDrive\FAST\Spring 2017\IPT\Lectures\Week01\Week01Code2\ConsoleApplication2\Client\bin\Debug\Client.pdb
+C:\Users\mfazal\OneDrive\FAST\Spring 2017\IPT\Lectures\Week01\Week01Code2\ConsoleApplication2\Client\obj\x86\Debug\Client.csprojResolveAssemblyReference.cache

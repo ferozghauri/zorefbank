@@ -66,7 +66,7 @@
                                   <input name="us" class="col-xs-8 col-xs-offset-2" type="text" placeholder="username" id="username"/><br><br><br>
                                   <input name="pas" class="col-xs-8 col-xs-offset-2" type="password" placeholder="password" id="password"/><br><br><br>
                                   <button name="submit" id="loginbutton" class="btn btn-default col-xs-8 col-xs-offset-2">Login</button><br><br><br>
-                                  <p class="message">Not registered?<a href="createaccount.html">Create an account</a></p><br><br>
+                                  <p class="message">Not registered?<a href="signup.html">Create an account</a></p><br><br>
                                  <a href="index.html">Go back</a><br><br>
 
 

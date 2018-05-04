@@ -20,7 +20,29 @@ if(isset($_POST["id"]))
     $username = $custinfo['Username'];
     $password = $custinfo['Password'];
     $acctype = $custinfo['acc_type'];
-    $accountnumber = mt_rand(100000, 999999);
+   function Acciuntno($length = 6, $chars = '1234567890')
+{
+    $result = mysql_query("SELECT Acc_no FROM account");
+    $storeArray = array();
+    while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+    $storeArray[] =  $row['Acc_no'];  
+}
+    $chars_length = (strlen($chars) - 1);
+    $stringv = $chars{rand(0, $chars_length)};
+    for ($i = 1; $i < $length; $i = strlen($stringv))
+    {
+        $r = $chars{rand(0, $chars_length)};
+        if ($r != $stringv{$i - 1}) $stringv .=  $r;
+    }
+   if (in_array($stringv, $storeArray)) {
+       $a=Voucherno();
+   }
+       else{
+     $storeArray[] = $stringv;
+    return $accountnumber;
+   }
+
+}
     $amount = $custinfo['Init_amount'];
     $role = 'user';
     $query = "INSERT INTO Customer (First_name,Last_name,Email,Age,DoB,Contact,Address) VALUES ('$fname','$lname','$email','$age','$dob','$phone','$address')"; 

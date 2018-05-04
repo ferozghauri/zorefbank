@@ -54,7 +54,7 @@
 <div class="container">
         <div class="col-xs-12 text-center">
         <h2>ADMIN PANNEL</h2>
-            <h3>Existing Users Users</h3>
+            <h3>Existing Users</h3>
         </div>
             <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
@@ -62,7 +62,22 @@
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th></th>
-                <th></th>               
+                <th></th>
+                <th></th> 
+            </tr>
+        </thead>
+        </table>
+    <div class="col-xs-12 text-center">
+            <h3>Managers</h3>
+        </div>
+        <table id="managers" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th></th>
+                <th></th>
+                <th></th> 
             </tr>
         </thead>
         </table>
@@ -87,6 +102,20 @@
     "order" : [],
     "ajax" : {
      url:"fetch.php",
+     type:"POST"
+    }
+   });
+  }
+fetch_managers();
+//populate table
+  function fetch_managers()
+  {
+   var dataTable = $('#managers').DataTable({
+    "processing" : true,
+    "serverSide" : true,
+    "order" : [],
+    "ajax" : {
+     url:"fetchmanagers.php",
      type:"POST"
     }
    });
@@ -118,6 +147,23 @@
      data:{id:id},
      success:function(data){
          alert("User Removed");
+      $('#example').DataTable().destroy();
+      fetch_data();
+     }
+    });
+   }
+  });
+     
+        //make admin 
+  $(document).on('click', 'button[name=manager]', function(){
+   var id = $(this).attr("id");
+   if(confirm("Are you sure you want to make this user manager"))
+   {
+    $.ajax({
+     url:"makemanager.php",
+     method:"POST",
+     data:{id:id},
+     success:function(data){
       $('#example').DataTable().destroy();
       fetch_data();
      }

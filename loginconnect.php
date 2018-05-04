@@ -38,7 +38,7 @@ mysql_close();
 if($pass == $serverpass && $pass && $inuser)
 {	
     if($serverrole == "admin"){
-       header("Location: Admin/adminhome.html"); 
+       header("Location: Admin/newusers.html"); 
     }
     else if($serverrole == "manager"){
        header("Location: Manager/managerhome.php"); 

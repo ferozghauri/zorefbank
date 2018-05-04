@@ -208,7 +208,7 @@ $(document).ready(function(){
             <h3>Register New</h3>
             <div class="row">
                 <label for="inputLocation" class="col-sm-5 control-label" placeholder="Select Company">Select Company</label>
-                <div class="col-sm-8">
+                <div class="col-sm-12">
                 <select class="form-control" id="drop" name="drop">
                     
             <?php
@@ -243,14 +243,14 @@ $(document).ready(function(){
             <br>
             <div class="row">
                 <label for="inputLocation" class="col-sm-5 control-label">Enter Email</label>
-                <div class="col-sm-8">
+                <div class="col-sm-12">
                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
                 </div>
             </div>
             <br>
             <div class="row">
                 <label for="inputLocation" class="col-sm-5 control-label">Enter Password</label>
-                <div class="col-sm-8">
+                <div class="col-sm-12">
                 <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter password">
                 </div>
             </div>
@@ -264,7 +264,7 @@ $(document).ready(function(){
             </div>
             <br>
             <div class="row">
-               <div class="col-sm-8">
+               <div class="col-sm-12">
                     <button type="submit" class="btn btn-default" id="submitcompany">Register</button>
                </div>
             </div>

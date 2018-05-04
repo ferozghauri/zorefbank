@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>ZorefBank: Signup</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -54,28 +54,28 @@
         <form action="signupconnect.php" method="post">
             <br><br>
             
-                <input class="col-xs-3 col-xs-offset-2" type="text" placeholder="First Name" name="first_name"/>
-                <input class="col-xs-3 col-xs-offset-1" type="text" placeholder="Last Name" name="last_name"/><br><br><br>
-                <input class="col-xs-6 col-xs-offset-2" type="text" placeholder="username" name="username"/><br><br><br>
+                <input class="col-xs-3 col-xs-offset-2" type="text" placeholder="First Name" id="first_name" name="first_name"/>
+                <input class="col-xs-3 col-xs-offset-1" type="text" placeholder="Last Name" id="last_name" name="last_name"/><br><br><br>
+                <input class="col-xs-6 col-xs-offset-2" type="text" placeholder="username" id="username" name="username"/><br><br><br>
                 <input class="col-xs-3 col-xs-offset-2" type="password" placeholder="password" id="password" name="password"/>
                 <input class="col-xs-3 col-xs-offset-1" type="password" placeholder="Confirm password" id="cpassword" name="cpassword"/><br><br><br>
-                <input class="col-xs-8 col-xs-offset-2" type="text" placeholder="Address" name="address"/><br><br><br>
+                <input class="col-xs-8 col-xs-offset-2" type="text" placeholder="Address" id="address" name="address"/><br><br><br>
                 <input class="col-xs-3 col-xs-offset-2" type="text" placeholder="DoB" id="dob" name="dob"/>
                 <script type="text/javascript">  
                  $('#dob').datetimepicker({
                      format: 'YYYY/MM/DD'
                  });
                 </script>
-                <input class="col-xs-3 col-xs-offset-1" type="text" placeholder="City" name="city"/><br><br><br>
-                <input class="col-xs-6 col-xs-offset-2" type="text" placeholder="Phone" name="phone"/><br><br><br>
-                <input class="col-xs-6 col-xs-offset-2" type="Email" placeholder="Email" name="email"/><br><br><br>
-                <input class="col-xs-4 col-xs-offset-2" type="text" placeholder="Enter Initial Amount" name="amount"/><br><br><br>
-                <select class="col-xs-4 col-xs-offset-2" type="drop" placeholder="Account type" name="acc_type">
+                <input class="col-xs-3 col-xs-offset-1" type="text" placeholder="City" id="city" name="city"/><br><br><br>
+                <input class="col-xs-6 col-xs-offset-2" type="text" placeholder="Phone" id="phone" name="phone"/><br><br><br>
+                <input class="col-xs-6 col-xs-offset-2" type="Email" placeholder="Email" id="email" name="email"/><br><br><br>
+                <input class="col-xs-4 col-xs-offset-2" type="text" placeholder="Enter Initial Amount" id="amount" name="amount"/><br><br><br>
+                <select class="col-xs-4 col-xs-offset-2" type="drop" placeholder="Account type" id="acc_type" name="acc_type">
                     <option>-Select Account Type-</option>
                     <option>current</option>
                     <option>savings</option>
                 </select><br><br><br>
-                <button class="col-xs-8 col-xs-offset-2" id="submitbutton" name="submit" name="signupbutton">Sign Up</button><br><br><br>
+                <button class="col-xs-8 col-xs-offset-2" id="submitbutton" name="submit" disabled="disabled" name="signupbutton">Sign Up</button><br><br><br>
             <a href="Login.php">Go back</a>
         </form>
             </div>
@@ -85,6 +85,25 @@
   </div> 
 </div>
 <script>
+     $(document).ready(function(){
+var $fields = $('#first_name, #last_name, #username, #password, #cpassword,#address,#dob,#city,#phone,#email,#amount,#acc_type');
+  
+  $fields.on('keyup change', function() {
+    if (allFilled($fields)) {
+       $('#submitbutton').removeAttr('disabled');
+    }
+  });
+
+  function allFilled($fields) 
+  {
+    return $fields.filter(function() {
+      return this.value === ''; 
+    }).length == 0;
+  }
+     
+ });
+    
+    
     var password = document.getElementById("password")
   , cpassword = document.getElementById("cpassword");
 

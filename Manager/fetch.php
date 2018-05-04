@@ -42,7 +42,10 @@ while($row = mysqli_fetch_array($result))
  $sub_array = array();
  $sub_array[] = '<div class="update" data-id="'.$row["Cust_no"].'" data-column="First_Name">' . $row["First_name"] . '</div>';
  $sub_array[] = '<div class="update" data-id="'.$row["Cust_no"].'" data-column="Last_name">' . $row["Last_name"] . '</div>';
+    $sub_array[] = '<div class="update" data-id="'.$row["Cust_no"].'" data-column="flag_status">' . $row["flag_status"] . '</div>';
  $sub_array[] = '<button type="button" name="delete" class="btn" id="'.$row["Cust_no"].'">Show Profile</button>';
+    $sub_array[] = '<button type="button" name="red" class="btn" id="'.$row["Cust_no"].'">Flag User</button>';
+    $sub_array[] = '<button type="button" name="green" class="btn" id="'.$row["Cust_no"].'">Unflag user</button>';
  $data[] = $sub_array;
 }
 

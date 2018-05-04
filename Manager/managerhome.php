@@ -46,6 +46,7 @@
     </div>
     <ul class="nav navbar-nav">
       <li><a href="showmessages.html">Feedback</a></li>
+        <li><a href="loans.html">Loans</a></li>
       <li><a href="../index.html">Log out</a></li>
     </ul>
   </div>
@@ -60,6 +61,9 @@
             <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
+                <th>Flag Status</th>
+                <th></th>
+                <th></th>
                 <th></th>
             </tr>
         </thead>
@@ -69,7 +73,6 @@
         <hr style="border:1px solid dodgerblue;">
         
     <div class="col-xs-12" id="user_profile">
-            <h3>Dynamic User Profile will be shown here</h3>
     </div>
     
     </div>
@@ -100,20 +103,46 @@
     }
    });
   }
-           $(document).on('click', '.btn', function(){
-           var id=$(this).attr("id");  
-            
-                $.ajax({  
-                     url:"showprofile.php",  
-                     method:"POST",  
-                     data:{id:id},  
-                     dataType:"text",  
-                     success:function(data){  
-                          $("#user_profile").html(data);  
-          
-                     }  
-                });  
-            });  
-      
+    $(document).on('click', 'button[name=delete]', function(){
+   var id=$(this).attr("id");  
+
+        $.ajax({  
+             url:"showprofile.php",  
+             method:"POST",  
+             data:{id:id},  
+             dataType:"text",  
+             success:function(data){  
+                  $("#user_profile").html(data);
+             }  
+        });  
+    });  
+        $(document).on('click', 'button[name=red]', function(){
+   var id = $(this).attr("id");
+ 
+    $.ajax({
+     url:"flaguser.php",
+     method:"POST",
+     data:{id:id},
+     success:function(data){
+      $('#example').DataTable().destroy();
+      fetch_data();
+     }
+    });
+   
+  });
+    $(document).on('click', 'button[name=green]', function(){
+   var id = $(this).attr("id");
+ 
+    $.ajax({
+     url:"unflaguser.php",
+     method:"POST",
+     data:{id:id},
+     success:function(data){
+      $('#example').DataTable().destroy();
+      fetch_data();
+     }
+    });
+   
+  });
  });
 </script>

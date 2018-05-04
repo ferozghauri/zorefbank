@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="true"?>
+-<EmailMessage>  
+    <To>mferozghauri@gmail.com</To>  
+    <Subject>Final testing</Subject>  
+    <MessageBody>Yes it works</MessageBody> 
+</EmailMessage> 

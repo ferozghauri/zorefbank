@@ -3,7 +3,7 @@
 $connect = mysqli_connect("localhost", "root", "", "zorefbank");
 $columns = array('First_name', 'Last_name');
 
-$query = "SELECT * FROM Customer ";
+$query = "SELECT * FROM Customer";
 
 if(isset($_POST["search"]["value"]))
 {
@@ -43,6 +43,7 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = '<div class="update" data-id="'.$row["Cust_no"].'" data-column="First_Name">' . $row["First_name"] . '</div>';
  $sub_array[] = '<div class="update" data-id="'.$row["Cust_no"].'" data-column="Last_name">' . $row["Last_name"] . '</div>';
  $sub_array[] = '<button type="button" name="show" class="btn" id="'.$row["Cust_no"].'">Show Profile</button>';
+ $sub_array[] = '<button style="background-color: blue; color: white;" type="button" name="manager" class="btn" id="'.$row["Cust_no"].'">Make Manager</button>';
  $sub_array[] = '<button style="background-color: red; color: white;" type="button" name="delete" class="btn" id="'.$row["Cust_no"].'">Remove</button>';
  $data[] = $sub_array;
 }

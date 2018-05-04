@@ -138,10 +138,62 @@ $accounttype= $rowtype["account_type"];
          <br><br><br><br><br>
         <h4>Account Balance: <a><?php echo $accountbalance; ?></a> </h4>
         <br>
+         <h4>Account Number: <a><?php echo $accountnumber; ?></a> </h4>
+        <br>
         
         
     </div>
     
+    </div>
+    <div class="row">
+     <div id="loan" class="col-lg-8">
+         <br><br><br><br><br>
+        <h3>APPLY FOR LOAN</h3>
+        <br>
+         <form action="applyloan.php" method="post">
+         <div class="row">
+                <label for="inputLocation" class="col-sm-5 control-label">Enter Amount</label>
+                <div class="col-sm-12">
+                <input type="text" class="form-control" id="email" name="amnt" placeholder="Enter Amount">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <label for="inputLocation" class="col-sm-5 control-label">Enter Duration</label>
+                <div class="col-sm-12">
+                <input type="text" class="form-control" id="pwd" name="dur" placeholder="Enter duration">
+                </div>
+            </div>
+              <div class="row">
+                <label for="inputLocation" class="col-sm-5 control-label">Enter Password</label>
+                <div class="col-sm-12">
+                <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter password">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class=" col-sm-3">
+                <div class="checkbox">
+                    <label><input type="checkbox">Agree</label>
+                </div>
+                </div>
+                <div class=" col-sm-6">
+                <div class="checkbox">
+                    <a href="terms.html">Terms and conditions</a>
+                </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+               <div class="col-sm-12">
+                    <button type="submit" class="btn btn-default" id="submitcompany" name="l">Apply</button>
+               </div>
+            </div>
+         </form>
+        <br>
+        
+        
+    </div>
     </div>
    
 </div>
